@@ -89,7 +89,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 	\def\sectionheadermargin{6pt}
 	\def\beforesectionheaderhrulespace{2.85pt}
 	\def\sectionheaderhrlueheight{0.518pt}
-	\def\aftersectionheaderspace{-5.8pt}
+	\def\aftersectionheaderspace{-5.8pt}%{0pt}%-5.8pt}
 	\def\aftersinglelinesubsectionheaderspace{-20.25pt}
 	\def\afterdoublelinesubsectionheaderspace{-11.75pt}
 	\def\aftermultilinesubsectionheaderspace{-7.75pt}
@@ -138,7 +138,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 	\typeout {kokoko}
 	\typeout \spaceskip
 	\spaceskip \namespaceskip \relax
-	\textbf{\LARGE\textls[110]{\textsc{\@name}}}
+	\textbf{\Huge\textls[110]{\textsc{\@name}}}
 }
 
 \makeatother
@@ -176,7 +176,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 	\vspace*{\beforesectionheaderspace}
 	% Set text margins to equal \tabcolsep (6pt by default)
 	\begin{adjustwidth}{\sectionheadermargin}{\sectionheadermargin}
-		\textsc{\textbf{#1}}
+		\textsc{\textbf{\Large#1}}
 	\end{adjustwidth}
 	\vspace*{\beforesectionheaderhrulespace}
 	\hrule height \sectionheaderhrlueheight
@@ -197,7 +197,8 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 	\notblank{#4}{\toggletrue{righttitledefined}}{}
 	\ifboolexpr{togl {lefttitledefined} or togl {centertitledefined} or togl {righttitledefined}}{
 		\begin{tabu} to 1\textwidth { X[l,p] X[c,p] X[r,p] }
-			\textbf{#2} & \textbf{#3} & \textbf{#4} \\
+			\textbf{#2} & %\textbf{#3}
+			 & #4 \\
 		\end{tabu}
 		% Add space according to the specidied number of lines
 		\ifnumcomp{#1}{=}{1}{\vspace*{\aftersinglelinesubsectionheaderspace}}{
@@ -211,7 +212,7 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 	\togglefalse{lefttitledefined}
 	\togglefalse{centertitledefined}
 	\togglefalse{righttitledefined}
-	\begin{adjustwidth}{\subsectionmargin}{\subsectionmargin}
+	\begin{adjustwidth}{\subsectionmargin}{\subsectionmargin} #3
 }
 {
 	\end{adjustwidth}
